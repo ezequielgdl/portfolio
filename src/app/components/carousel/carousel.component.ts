@@ -14,26 +14,46 @@ import { CommonModule } from '@angular/common';
       class="relative h-3/4 md:h-1/3 lg:h-2/3 w-full px-6 rounded-xl motion-opacity-in-[0%] motion-duration-[0.00s] motion-duration-[3s]/opacity"
     >
       @defer {
-      <!-- Navigation Button - Top -->
-      <button
-        (click)="prevSlide()"
-        class="absolute -top-16 left-1/2 -translate-x-1/2 p-2 rounded-full bg-olive-green hover:bg-olive-green-dark transition-colors"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="#f8f8f8"
+      <div class="absolute -top-12 right-8 flex gap-4">
+        <button
+          (click)="prevSlide()"
+          class="p-1 rounded-full bg-olive-green hover:bg-olive-green-dark transition-colors"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M5 15l7-7 7 7"
-          />
-        </svg>
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="#f8f8f8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 15l7-7 7 7"
+            />
+          </svg>
+        </button>
+        <button
+          (click)="nextSlide()"
+          class="p-1 rounded-full bg-olive-green hover:bg-olive-green-dark transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="#f8f8f8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+      </div>
 
       <!-- Carousel Container -->
       <div class="relative w-full h-full overflow-hidden">
@@ -79,27 +99,6 @@ import { CommonModule } from '@angular/common';
         </div>
         }
       </div>
-
-      <!-- Navigation Button - Bottom -->
-      <button
-        (click)="nextSlide()"
-        class="absolute -bottom-16 left-1/2 -translate-x-1/2 p-2 rounded-full bg-olive-green hover:bg-olive-green-dark transition-colors"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="#f8f8f8"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
-      </button>
       } @placeholder (minimum 1s) {
       <div class="w-full h-full bg-olive-green rounded-xl"></div>
       }
