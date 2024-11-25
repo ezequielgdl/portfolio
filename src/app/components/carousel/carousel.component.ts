@@ -57,7 +57,7 @@ import { CommonModule } from '@angular/common';
 
       <!-- Carousel Container -->
       <div class="relative w-full h-full overflow-hidden">
-        @for (project of projects; track project.id; let i = $index) {
+        @for (project of projects; track project.title; let i = $index) {
         <div
           class="absolute w-full h-full aspect-video flex items-center justify-center transition-transform duration-700 ease-in-out rounded-xl bg-olive-green text-white-cream"
           [style.transform]="'translateY(' + 100 * (i - currentIndex) + '%)'"
