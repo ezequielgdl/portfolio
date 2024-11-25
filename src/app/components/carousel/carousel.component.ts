@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   host: {
-    class: 'w-2/3 h-screen flex flex-col items-center justify-around',
+    class:
+      'w-full md:w-2/3 h-screen flex flex-col items-center justify-around cursor-default',
   },
   template: `
     <section
-      class="relative h-2/3 w-full px-6 rounded-xl motion-opacity-in-[0%] motion-duration-[0.00s] motion-duration-[3s]/opacity"
+      class="relative h-3/4 md:h-1/3 lg:h-2/3 w-full px-6 rounded-xl motion-opacity-in-[0%] motion-duration-[0.00s] motion-duration-[3s]/opacity"
     >
       @defer {
       <!-- Navigation Button - Top -->
@@ -38,7 +39,7 @@ import { CommonModule } from '@angular/common';
       <div class="relative w-full h-full overflow-hidden">
         @for (project of projects; track project.id; let i = $index) {
         <div
-          class="absolute w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out rounded-xl bg-olive-green text-white-cream"
+          class="absolute w-full h-full aspect-video flex items-center justify-center transition-transform duration-700 ease-in-out rounded-xl bg-olive-green text-white-cream"
           [style.transform]="'translateY(' + 100 * (i - currentIndex) + '%)'"
         >
           <video
@@ -55,7 +56,7 @@ import { CommonModule } from '@angular/common';
             class="absolute inset-0 bg-olive-green/95 opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center px-12 text-center rounded-xl"
           >
             <h2 class="text-3xl font-medium mb-4">{{ project.title }}</h2>
-            <p class="text-lg mb-6">{{ project.description }}</p>
+            <p class="text-md md:text-lg mb-6">{{ project.description }}</p>
             <div class="flex gap-4">
               <a
                 *ngIf="project.url"

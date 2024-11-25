@@ -20,7 +20,7 @@ import { TooltipComponent } from '../../shared/components/tooltip/tooltip.compon
     <div class="overflow-visible">
       <div
         #techstack
-        class="flex items-center justify-center gap-4 p-4 w-fit text-4xl text-olive-green bg-white-cream rounded-2xl z-10 border-2 border-olive-green cursor-default"
+        class="flex items-center justify-center gap-2 p-4 w-fit text-lg md:text-4xl text-olive-green bg-white-cream rounded-2xl z-10 border-2 border-olive-green cursor-default"
         [class]="isHovered ? 'animate-fade-up' : 'animate-fade-down'"
         (mouseleave)="isHovered = false"
       >

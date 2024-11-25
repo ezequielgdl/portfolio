@@ -9,7 +9,7 @@ import { TechstackComponent } from './components/techstack/techstack.component';
   selector: 'app-root',
   standalone: true,
   host: {
-    class: 'flex flex-row',
+    class: 'flex flex-col md:flex-row',
   },
   imports: [
     HeroComponent,

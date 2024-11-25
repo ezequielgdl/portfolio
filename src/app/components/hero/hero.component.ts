@@ -7,7 +7,7 @@ import { IconsComponent } from '../icons/icons.component';
   standalone: true,
   host: {
     class:
-      'flex flex-col items-start justify-center h-screen px-10 w-1/3 motion-opacity-in-[0%] motion-duration-[0.00s] motion-duration-[3s]/opacity',
+      'flex flex-col items-center md:items-start justify-center h-screen px-10 w-full md:w-1/3 motion-opacity-in-[0%] motion-duration-[0.00s] motion-duration-[3s]/opacity cursor-default',
   },
   imports: [UpperCasePipe, IconsComponent],
   template: `
