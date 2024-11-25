@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ElementRef, OnDestroy } from '@angular/core';
 import { TooltipComponent } from '../../shared/components/tooltip/tooltip.component';
 
 @Component({
@@ -13,7 +13,6 @@ import { TooltipComponent } from '../../shared/components/tooltip/tooltip.compon
     <div
       #techstackTitle
       class="text-center text-2xl pb-2 text-olive-green absolute bottom-0 w-full cursor-default motion-safe:animate-bounce-small"
-      (mouseenter)="isHovered = true"
     >
       Tech Stack
     </div>
@@ -21,7 +20,6 @@ import { TooltipComponent } from '../../shared/components/tooltip/tooltip.compon
       #techstack
       class="flex items-center justify-center gap-2 p-4 w-fit text-lg md:text-4xl text-olive-green bg-white-cream rounded-2xl z-10 border-2 border-olive-green cursor-default"
       [class]="isHovered ? 'animate-fade-up' : 'animate-fade-down'"
-      (mouseleave)="isHovered = false"
     >
       <div class="relative group">
         <i class="devicon-angular-plain"></i>
@@ -74,6 +72,24 @@ import { TooltipComponent } from '../../shared/components/tooltip/tooltip.compon
     </div>
   `,
 })
-export class TechstackComponent {
+export class TechstackComponent implements OnInit, OnDestroy {
   isHovered = false;
+  private mouseMoveListener: ((event: MouseEvent) => void) | undefined;
+
+  ngOnInit() {
+    this.mouseMoveListener = this.handleMouseMove.bind(this);
+    document.addEventListener('mousemove', this.mouseMoveListener);
+  }
+
+  ngOnDestroy() {
+    if (this.mouseMoveListener) {
+      document.removeEventListener('mousemove', this.mouseMoveListener);
+    }
+  }
+
+  private handleMouseMove(event: MouseEvent) {
+    const viewportHeight = window.innerHeight;
+    const triggerZone = viewportHeight * 0.9; // 90% of viewport height
+    this.isHovered = event.clientY > triggerZone;
+  }
 }
