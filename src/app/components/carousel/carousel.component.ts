@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
       <div class="absolute -top-12 right-8 flex gap-4">
         <button
           (click)="prevSlide()"
-          class="p-1 rounded-full bg-olive-green hover:bg-olive-green-dark transition-colors"
+          class="p-1 rounded-full bg-olive-green hover:bg-olive-green-dark transition-colors focus:outline-olive-green-dark"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -69,8 +69,6 @@ import { CommonModule } from '@angular/common';
             loop
             muted
             playsinline
-            #videoPlayer
-            (loadedmetadata)="setupVideo(videoPlayer, i)"
           ></video>
           <div
             class="absolute inset-0 bg-olive-green/95 opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center px-12 text-center rounded-xl"
@@ -153,38 +151,13 @@ export class CarouselComponent {
     },
   ];
 
-  ngOnInit() {
-    this.updateVideos();
-  }
-
-  setupVideo(video: HTMLVideoElement, index: number) {
-    if (index === this.currentIndex) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  }
-
   nextSlide() {
     this.currentIndex = (this.currentIndex + 1) % this.projects.length;
-    this.updateVideos();
   }
 
   prevSlide() {
     this.currentIndex =
       (this.currentIndex - 1 + this.projects.length) % this.projects.length;
-    this.updateVideos();
-  }
-
-  private updateVideos() {
-    const videos = document.querySelectorAll('video');
-    videos.forEach((video, index) => {
-      if (index === this.currentIndex) {
-        video.play();
-      } else {
-        video.pause();
-      }
-    });
   }
 
   @HostListener('window:keydown', ['$event'])
