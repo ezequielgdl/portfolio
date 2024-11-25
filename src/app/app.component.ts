@@ -1,17 +1,27 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeroComponent } from './components/hero/hero.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { TechstackComponent } from './components/techstack/techstack.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  host: {
+    class: 'flex flex-row',
+  },
+  imports: [
+    HeroComponent,
+    CarouselComponent,
+    FooterComponent,
+    TechstackComponent,
+  ],
   template: `
-    <h1>Welcome to {{title}}!</h1>
-
-    <router-outlet />
+    <app-hero />
+    <app-carousel />
+    <app-footer />
+    <app-techstack />
   `,
-  styles: [],
 })
-export class AppComponent {
-  title = 'Portfolio';
-}
+export class AppComponent {}
