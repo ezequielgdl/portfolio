@@ -1,4 +1,10 @@
-import { Component, HostListener, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,9 +19,10 @@ import { CommonModule } from '@angular/common';
     <section
       class="relative h-3/4 md:h-1/3 lg:h-2/3 w-full px-6 rounded-xl motion-opacity-in-[0%] motion-duration-[0.00s] motion-duration-[3s]/opacity"
     >
-      @defer {
       <div class="absolute -top-12 right-8 flex gap-4">
         <button
+          #prevButton
+          data-testid="prev-button"
           (click)="prevSlide()"
           class="p-1 rounded-full bg-olive-green hover:bg-olive-green-dark transition-colors focus:outline-olive-green-dark"
         >
@@ -35,6 +42,8 @@ import { CommonModule } from '@angular/common';
           </svg>
         </button>
         <button
+          #nextButton
+          data-testid="next-button"
           (click)="nextSlide()"
           class="p-1 rounded-full bg-olive-green hover:bg-olive-green-dark transition-colors"
         >
@@ -63,11 +72,12 @@ import { CommonModule } from '@angular/common';
           [style.transform]="'translateY(' + 100 * (i - currentIndex) + '%)'"
         >
           <video
-            [src]="project.video"
+            [src]="loadedVideos.has(i) ? project.video : ''"
+            [attr.data-src]="project.video"
             class="w-full h-full rounded-xl px-6"
             autoplay
-            loop
-            muted
+            [loop]="loadedVideos.has(i)"
+            [muted]="true"
             playsinline
           ></video>
           <div
@@ -97,13 +107,10 @@ import { CommonModule } from '@angular/common';
         </div>
         }
       </div>
-      } @placeholder (minimum 1s) {
-      <div class="w-full h-full bg-olive-green rounded-xl"></div>
-      }
     </section>
   `,
 })
-export class CarouselComponent {
+export class CarouselComponent implements AfterViewInit {
   currentIndex = 0;
 
   projects = [
@@ -151,13 +158,31 @@ export class CarouselComponent {
     },
   ];
 
+  loadedVideos = new Set<number>();
+
+  ngAfterViewInit() {
+    Promise.resolve().then(() => {
+      this.loadVideo(this.currentIndex);
+      this.loadVideo((this.currentIndex + 1) % this.projects.length);
+    });
+  }
+
+  loadVideo(index: number) {
+    if (this.loadedVideos.has(index)) return;
+    this.loadedVideos.add(index);
+  }
+
   nextSlide() {
     this.currentIndex = (this.currentIndex + 1) % this.projects.length;
+    this.loadVideo((this.currentIndex + 1) % this.projects.length);
   }
 
   prevSlide() {
     this.currentIndex =
       (this.currentIndex - 1 + this.projects.length) % this.projects.length;
+    this.loadVideo(
+      (this.currentIndex - 1 + this.projects.length) % this.projects.length
+    );
   }
 
   @HostListener('window:keydown', ['$event'])

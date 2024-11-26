@@ -9,7 +9,7 @@ import { ModalComponent } from '../contact-modal/contact-modal.component';
     class: 'absolute top-0 right-0 px-6 py-3 text-olive-green cursor-pointer',
   },
   template: `
-    <p (click)="isModalOpen = true">contact me</p>
+    <button (click)="isModalOpen = true">contact me</button>
     <app-modal
       [isOpen]="isModalOpen"
       (close)="isModalOpen = false"
@@ -35,7 +35,6 @@ import { ModalComponent } from '../contact-modal/contact-modal.component';
       </div>
     </app-modal>
   `,
-  styles: ``,
 })
 export class FooterComponent {
   isModalOpen = false;

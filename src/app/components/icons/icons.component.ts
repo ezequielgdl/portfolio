@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
   template: `
     <button class="text-olive-green text-2xl">
       <a
+        #github
         class="hover:text-black"
         href="https://github.com/ezequielgdl"
         target="_blank"
@@ -18,7 +19,12 @@ import { Component } from '@angular/core';
       </a>
     </button>
     <button class="text-olive-green hover:text-olive-green-dark text-2xl">
-      <a href="https://www.linkedin.com/in/ezequieldelima/" target="_blank">
+      <a
+        #linkedin
+        class="hover:text-black"
+        href="https://www.linkedin.com/in/ezequieldelima/"
+        target="_blank"
+      >
         <i class="devicon-linkedin-plain"></i>
       </a>
     </button>
