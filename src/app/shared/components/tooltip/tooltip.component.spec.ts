@@ -8,9 +8,8 @@ describe('TooltipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TooltipComponent]
-    })
-    .compileComponents();
+      imports: [TooltipComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TooltipComponent);
     component = fixture.componentInstance;
@@ -19,5 +18,11 @@ describe('TooltipComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display the text', () => {
+    component.text = 'Angular';
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('Angular');
   });
 });

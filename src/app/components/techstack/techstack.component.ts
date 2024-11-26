@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TooltipComponent } from '../../shared/components/tooltip/tooltip.component';
 
 @Component({
@@ -21,60 +21,33 @@ import { TooltipComponent } from '../../shared/components/tooltip/tooltip.compon
       class="flex items-center justify-center gap-2 p-4 w-fit text-lg md:text-4xl text-olive-green bg-white-cream rounded-2xl z-10 border-2 border-olive-green cursor-default"
       [class]="isHovered ? 'animate-fade-up' : 'animate-fade-down'"
     >
+      @for (tech of techStack; track tech.icon) {
       <div class="relative group">
-        <i class="devicon-angular-plain"></i>
-        <app-tooltip text="Angular" />
+        <i class="devicon-{{ tech.icon }}"></i>
+        <app-tooltip [text]="tech.name" />
       </div>
-      <div class="relative group">
-        <i class="devicon-react-original"></i>
-        <app-tooltip text="React" />
-      </div>
-      <div class="relative group">
-        <i class="devicon-typescript-plain"></i>
-        <app-tooltip text="TypeScript" />
-      </div>
-      <div class="relative group">
-        <i class="devicon-rxjs-plain"></i>
-        <app-tooltip text="RxJS" />
-      </div>
-      <div class="relative group">
-        <i class="devicon-supabase-plain"></i>
-        <app-tooltip text="Supabase" />
-      </div>
-      <div class="relative group">
-        <i class="devicon-tailwindcss-plain"></i>
-        <app-tooltip text="Tailwind CSS" />
-      </div>
-      <div class="relative group">
-        <i class="devicon-nodejs-plain"></i>
-        <app-tooltip text="Node.js" />
-      </div>
-      <div class="relative group">
-        <i class="devicon-javascript-plain"></i>
-        <app-tooltip text="JavaScript" />
-      </div>
-      <div class="relative group">
-        <i class="devicon-html5-plain"></i>
-        <app-tooltip text="HTML5" />
-      </div>
-      <div class="relative group">
-        <i class="devicon-css3-plain"></i>
-        <app-tooltip text="CSS3" />
-      </div>
-      <div class="relative group">
-        <i class="devicon-mongodb-plain"></i>
-        <app-tooltip text="MongoDB" />
-      </div>
-      <div class="relative group">
-        <i class="devicon-express-original"></i>
-        <app-tooltip text="Express.js" />
-      </div>
+      }
     </div>
   `,
 })
 export class TechstackComponent implements OnInit, OnDestroy {
   isHovered = false;
   private mouseMoveListener: ((event: MouseEvent) => void) | undefined;
+
+  techStack = [
+    { icon: 'angular-plain', name: 'Angular' },
+    { icon: 'react-plain', name: 'React' },
+    { icon: 'typescript-plain', name: 'TypeScript' },
+    { icon: 'rxjs-plain', name: 'RxJS' },
+    { icon: 'supabase-plain', name: 'Supabase' },
+    { icon: 'tailwindcss-plain', name: 'Tailwind CSS' },
+    { icon: 'nodejs-plain', name: 'Node.js' },
+    { icon: 'javascript-plain', name: 'JavaScript' },
+    { icon: 'html5-plain', name: 'HTML5' },
+    { icon: 'css3-plain', name: 'CSS3' },
+    { icon: 'mongodb-plain', name: 'MongoDB' },
+    { icon: 'express-original', name: 'Express.js' },
+  ];
 
   ngOnInit() {
     this.mouseMoveListener = this.handleMouseMove.bind(this);
