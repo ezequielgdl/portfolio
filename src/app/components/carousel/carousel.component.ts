@@ -156,6 +156,14 @@ export class CarouselComponent implements AfterViewInit {
       video: '/media/touristtrapp.webm',
       url: 'https://solo-frontend-turisme.vercel.app',
     },
+    {
+      id: 6,
+      title: 'FaithNow',
+      description:
+        'A project created by Amateur.Rocks, FaithNow is a viral campaign in Berlin.',
+      video: '/media/faithnow.webm',
+      url: 'https://faithnow.shop',
+    },
   ];
 
   loadedVideos = new Set<number>();
