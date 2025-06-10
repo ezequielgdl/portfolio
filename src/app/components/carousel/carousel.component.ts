@@ -132,14 +132,6 @@ export class CarouselComponent implements AfterViewInit {
       url: 'https://iwforum.vercel.app',
     },
     {
-      id: 3,
-      title: 'Circclo',
-      description:
-        'Worked as a frontend developer for Circclo from 2022-2024. Circclo is a startup that provides technology for the end of single-use plastic containers.',
-      video: '/media/circclo.webm',
-      url: 'https://circclo.com',
-    },
-    {
       id: 4,
       title: 'Parrillometro',
       description:
