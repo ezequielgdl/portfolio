@@ -89,7 +89,7 @@ import {
                   <a
                     [href]="project.url"
                     target="_blank"
-                    class="px-4 py-2 bg-white-cream text-olive-green rounded hover:bg-opacity-90 transition-colors"
+                    class="px-4 py-2 bg-white-cream text-olive-green rounded-sm hover:bg-white-cream/90 transition-colors"
                     >
                     Visit Site
                   </a>
@@ -98,7 +98,7 @@ import {
                   <a
                     [href]="project.github"
                     target="_blank"
-                    class="px-4 py-2 bg-white-cream text-olive-green rounded hover:bg-opacity-90 transition-colors"
+                    class="px-4 py-2 bg-white-cream text-olive-green rounded-sm hover:bg-white-cream/90 transition-colors"
                     >
                     View Code
                   </a>
@@ -107,7 +107,7 @@ import {
                   <a
                     [href]="project.docs"
                     target="_blank"
-                    class="px-4 py-2 bg-white-cream text-olive-green rounded hover:bg-opacity-90 transition-colors"
+                    class="px-4 py-2 bg-white-cream text-olive-green rounded-sm hover:bg-white-cream/90 transition-colors"
                     >
                     API Docs
                   </a>

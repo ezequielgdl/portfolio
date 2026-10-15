@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
     template: `
     @if (isOpen) {
       <div
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
         (click)="onBackdropClick($event)"
         >
         <div class="bg-white-cream p-6 rounded-lg shadow-lg w-fit">

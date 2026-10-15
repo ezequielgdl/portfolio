@@ -1,7 +1,89 @@
 /* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-motion';
+
+@theme {
+  --color-olive-green: #636b2f;
+  --color-olive-green-dark: #454d22;
+  --color-white-cream: #f8f8f8;
+
+  --font-apercu: Apercu Pro, sans-serif;
+  --font-apercu-mono: Apercu Pro Mono, sans-serif;
+
+  --animate-fade-in: fadeIn 1s ease-in-out;
+  --animate-fade-up: fadeUp 0.5s ease-in-out forwards;
+  --animate-fade-down: fadeDown 0.5s ease-in-out forwards;
+  --animate-bounce-small: bounceSmall 3s infinite;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(105%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeDown {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(105%);
+    }
+  }
+  @keyframes bounceSmall {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+      transform: translateY(0);
+    }
+    15% {
+      transform: translateY(-3px);
+    }
+    35% {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  /* Tailwind v4 no longer sets a pointer cursor on buttons */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
 
 :root {
   --white-cream: #f8f8f8;
