@@ -41,10 +41,12 @@ export class TechstackComponent implements OnInit, OnDestroy {
     { icon: 'supabase-plain', name: 'Supabase' },
     { icon: 'tailwindcss-plain', name: 'Tailwind CSS' },
     { icon: 'nodejs-plain', name: 'Node.js' },
+    { icon: 'nestjs-plain', name: 'NestJS' },
     { icon: 'javascript-plain', name: 'JavaScript' },
     { icon: 'html5-plain', name: 'HTML5' },
     { icon: 'css3-plain', name: 'CSS3' },
     { icon: 'mongodb-plain', name: 'MongoDB' },
+    { icon: 'postgresql-plain', name: 'PostgreSQL' },
     { icon: 'express-original', name: 'Express.js' },
   ];
 
