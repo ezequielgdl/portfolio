@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { TooltipComponent } from '../../shared/components/tooltip/tooltip.component';
 
 @Component({
@@ -7,6 +7,7 @@ import { TooltipComponent } from '../../shared/components/tooltip/tooltip.compon
     host: {
         class: 'absolute bottom-0 flex flex-col items-center w-full pb-2 overflow-y-hidden',
     },
+    changeDetection: ChangeDetectionStrategy.Eager,
     template: `
     <div
       #techstackTitle

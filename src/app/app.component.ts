@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeroComponent } from './components/hero/hero.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
@@ -16,6 +16,7 @@ import { TechstackComponent } from './components/techstack/techstack.component';
         FooterComponent,
         TechstackComponent,
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     template: `
     <app-hero />
     <app-carousel />

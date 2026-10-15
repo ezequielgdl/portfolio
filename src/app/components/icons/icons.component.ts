@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'app-icons',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     host: {
         class: 'flex gap-2',
     },
+    changeDetection: ChangeDetectionStrategy.Eager,
     template: `
     <button class="text-olive-green text-2xl">
       <a

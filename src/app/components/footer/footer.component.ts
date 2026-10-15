@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ModalComponent } from '../contact-modal/contact-modal.component';
 
 @Component({
@@ -7,6 +7,7 @@ import { ModalComponent } from '../contact-modal/contact-modal.component';
     host: {
         class: 'absolute top-0 right-0 px-6 py-3 text-olive-green cursor-pointer',
     },
+    changeDetection: ChangeDetectionStrategy.Eager,
     template: `
     <button (click)="isModalOpen = true">contact me</button>
     <app-modal

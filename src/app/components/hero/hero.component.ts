@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
 import { IconsComponent } from '../icons/icons.component';
 
@@ -8,6 +8,7 @@ import { IconsComponent } from '../icons/icons.component';
         class: 'flex flex-col items-center md:items-start justify-center h-screen px-10 w-full md:w-1/3 motion-opacity-in-[0%] motion-duration-[0.00s] motion-duration-[3s]/opacity cursor-default',
     },
     imports: [UpperCasePipe, IconsComponent],
+    changeDetection: ChangeDetectionStrategy.Eager,
     template: `
     <h1 class="text-olive-green text-5xl font-apercu font-medium">
       {{ 'ezequiel' | uppercase }}

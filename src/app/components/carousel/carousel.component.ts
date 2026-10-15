@@ -4,6 +4,7 @@ import {
   AfterViewInit,
   ViewChild,
   ElementRef,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
@@ -12,6 +13,7 @@ import {
     host: {
         class: 'w-full md:w-2/3 h-screen flex flex-col items-center justify-around cursor-default',
     },
+    changeDetection: ChangeDetectionStrategy.Eager,
     template: `
     <section
       class="relative h-3/4 md:h-1/3 lg:h-2/3 w-full px-6 rounded-xl motion-opacity-in-[0%] motion-duration-[0.00s] motion-duration-[3s]/opacity"
