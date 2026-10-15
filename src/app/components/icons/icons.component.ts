@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-icons',
-  standalone: true,
-  imports: [],
-  host: {
-    class: 'flex gap-2',
-  },
-  template: `
+    selector: 'app-icons',
+    imports: [],
+    host: {
+        class: 'flex gap-2',
+    },
+    template: `
     <button class="text-olive-green text-2xl">
       <a
         #github
@@ -28,6 +27,6 @@ import { Component } from '@angular/core';
         <i class="devicon-linkedin-plain"></i>
       </a>
     </button>
-  `,
+  `
 })
 export class IconsComponent {}

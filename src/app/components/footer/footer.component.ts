@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { ModalComponent } from '../contact-modal/contact-modal.component';
 
 @Component({
-  selector: 'app-footer',
-  standalone: true,
-  imports: [ModalComponent],
-  host: {
-    class: 'absolute top-0 right-0 px-6 py-3 text-olive-green cursor-pointer',
-  },
-  template: `
+    selector: 'app-footer',
+    imports: [ModalComponent],
+    host: {
+        class: 'absolute top-0 right-0 px-6 py-3 text-olive-green cursor-pointer',
+    },
+    template: `
     <button (click)="isModalOpen = true">contact me</button>
     <app-modal
       [isOpen]="isModalOpen"
@@ -34,7 +33,7 @@ import { ModalComponent } from '../contact-modal/contact-modal.component';
         </p>
       </div>
     </app-modal>
-  `,
+  `
 })
 export class FooterComponent {
   isModalOpen = false;

@@ -2,10 +2,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-modal',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-modal',
+    imports: [CommonModule],
+    template: `
     <div
       *ngIf="isOpen"
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
@@ -26,7 +25,7 @@ import { CommonModule } from '@angular/common';
         </div>
       </div>
     </div>
-  `,
+  `
 })
 export class ModalComponent {
   @Input() isOpen = false;

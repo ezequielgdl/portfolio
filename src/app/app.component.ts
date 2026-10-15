@@ -6,22 +6,21 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TechstackComponent } from './components/techstack/techstack.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  host: {
-    class: 'flex flex-col md:flex-row',
-  },
-  imports: [
-    HeroComponent,
-    CarouselComponent,
-    FooterComponent,
-    TechstackComponent,
-  ],
-  template: `
+    selector: 'app-root',
+    host: {
+        class: 'flex flex-col md:flex-row',
+    },
+    imports: [
+        HeroComponent,
+        CarouselComponent,
+        FooterComponent,
+        TechstackComponent,
+    ],
+    template: `
     <app-hero />
     <app-carousel />
     <app-footer />
     <app-techstack />
-  `,
+  `
 })
 export class AppComponent {}
