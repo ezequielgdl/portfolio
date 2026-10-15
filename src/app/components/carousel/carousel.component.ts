@@ -5,38 +5,37 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-carousel',
-    imports: [CommonModule],
+    imports: [],
     host: {
         class: 'w-full md:w-2/3 h-screen flex flex-col items-center justify-around cursor-default',
     },
     template: `
     <section
       class="relative h-3/4 md:h-1/3 lg:h-2/3 w-full px-6 rounded-xl motion-opacity-in-[0%] motion-duration-[0.00s] motion-duration-[3s]/opacity"
-    >
+      >
       <div class="absolute -top-12 right-8 flex gap-4">
         <button
           #prevButton
           data-testid="prev-button"
           (click)="prevSlide()"
           class="p-1 rounded-full bg-olive-green hover:bg-olive-green-dark transition-colors focus:outline-olive-green-dark"
-        >
+          >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="#f8f8f8"
-          >
+            >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
               d="M5 15l7-7 7 7"
-            />
+              />
           </svg>
         </button>
         <button
@@ -44,77 +43,80 @@ import { CommonModule } from '@angular/common';
           data-testid="next-button"
           (click)="nextSlide()"
           class="p-1 rounded-full bg-olive-green hover:bg-olive-green-dark transition-colors"
-        >
+          >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="#f8f8f8"
-          >
+            >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
               d="M19 9l-7 7-7-7"
-            />
+              />
           </svg>
         </button>
       </div>
-
+    
       <!-- Carousel Container -->
       <div class="relative w-full h-full overflow-hidden">
         @for (project of projects; track project.title; let i = $index) {
-        <div
-          class="absolute w-full h-full aspect-video flex items-center justify-center transition-transform duration-700 ease-in-out rounded-xl bg-olive-green text-white-cream"
-          [style.transform]="'translateY(' + 100 * (i - currentIndex) + '%)'"
-        >
-          <video
-            [src]="loadedVideos.has(i) ? project.video : ''"
-            [attr.data-src]="project.video"
-            class="w-full h-full rounded-xl px-6"
-            autoplay
-            [loop]="loadedVideos.has(i)"
-            [muted]="true"
-            playsinline
-          ></video>
           <div
-            class="absolute inset-0 bg-olive-green/95 opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center px-12 text-center rounded-xl"
-          >
-            <h2 class="text-3xl font-medium mb-4">{{ project.title }}</h2>
-            <p class="text-md md:text-lg mb-6">{{ project.description }}</p>
-            <div class="flex gap-4">
-              <a
-                *ngIf="project.url"
-                [href]="project.url"
-                target="_blank"
-                class="px-4 py-2 bg-white-cream text-olive-green rounded hover:bg-opacity-90 transition-colors"
+            class="absolute w-full h-full aspect-video flex items-center justify-center transition-transform duration-700 ease-in-out rounded-xl bg-olive-green text-white-cream"
+            [style.transform]="'translateY(' + 100 * (i - currentIndex) + '%)'"
+            >
+            <video
+              [src]="loadedVideos.has(i) ? project.video : ''"
+              [attr.data-src]="project.video"
+              class="w-full h-full rounded-xl px-6"
+              autoplay
+              [loop]="loadedVideos.has(i)"
+              [muted]="true"
+              playsinline
+            ></video>
+            <div
+              class="absolute inset-0 bg-olive-green/95 opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center px-12 text-center rounded-xl"
               >
-                Visit Site
-              </a>
-              <a
-                *ngIf="project.github"
-                [href]="project.github"
-                target="_blank"
-                class="px-4 py-2 bg-white-cream text-olive-green rounded hover:bg-opacity-90 transition-colors"
-              >
-                View Code
-              </a>
-              <a
-                *ngIf="project.docs"
-                [href]="project.docs"
-                target="_blank"
-                class="px-4 py-2 bg-white-cream text-olive-green rounded hover:bg-opacity-90 transition-colors"
-              >
-                API Docs
-              </a>
+              <h2 class="text-3xl font-medium mb-4">{{ project.title }}</h2>
+              <p class="text-md md:text-lg mb-6">{{ project.description }}</p>
+              <div class="flex gap-4">
+                @if (project.url) {
+                  <a
+                    [href]="project.url"
+                    target="_blank"
+                    class="px-4 py-2 bg-white-cream text-olive-green rounded hover:bg-opacity-90 transition-colors"
+                    >
+                    Visit Site
+                  </a>
+                }
+                @if (project.github) {
+                  <a
+                    [href]="project.github"
+                    target="_blank"
+                    class="px-4 py-2 bg-white-cream text-olive-green rounded hover:bg-opacity-90 transition-colors"
+                    >
+                    View Code
+                  </a>
+                }
+                @if (project.docs) {
+                  <a
+                    [href]="project.docs"
+                    target="_blank"
+                    class="px-4 py-2 bg-white-cream text-olive-green rounded hover:bg-opacity-90 transition-colors"
+                    >
+                    API Docs
+                  </a>
+                }
+              </div>
             </div>
           </div>
-        </div>
         }
       </div>
     </section>
-  `
+    `
 })
 export class CarouselComponent implements AfterViewInit {
   currentIndex = 0;
