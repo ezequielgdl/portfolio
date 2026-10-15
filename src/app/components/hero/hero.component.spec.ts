@@ -31,8 +31,8 @@ describe('HeroComponent', () => {
     const pipe = new UpperCasePipe();
     expect(pipe.transform('ezequiel')).toBe('EZEQUIEL');
     expect(pipe.transform('gómez de lima')).toBe('GÓMEZ DE LIMA');
-    expect(pipe.transform('frontend web developer')).toBe(
-      'FRONTEND WEB DEVELOPER'
+    expect(pipe.transform('full stack developer')).toBe(
+      'FULL STACK DEVELOPER'
     );
   });
 

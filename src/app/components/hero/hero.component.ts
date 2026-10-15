@@ -17,7 +17,7 @@ import { IconsComponent } from '../icons/icons.component';
       {{ 'gómez de lima' | uppercase }}
     </h1>
     <p class="text-olive-green text-2xl font-apercu-mono py-2">
-      {{ 'frontend web developer' | uppercase }}
+      {{ 'full stack developer' | uppercase }}
     </p>
     <app-icons />
   `
