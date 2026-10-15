@@ -102,6 +102,14 @@ import { CommonModule } from '@angular/common';
               >
                 View Code
               </a>
+              <a
+                *ngIf="project.docs"
+                [href]="project.docs"
+                target="_blank"
+                class="px-4 py-2 bg-white-cream text-olive-green rounded hover:bg-opacity-90 transition-colors"
+              >
+                API Docs
+              </a>
             </div>
           </div>
         </div>
@@ -125,6 +133,15 @@ export class CarouselComponent implements AfterViewInit {
     },
     {
       id: 2,
+      title: 'Observatorio de Residuos AMBA',
+      description:
+        'A full stack observatory that tracks the flow of urban solid waste across Buenos Aires Metropolitan Area (AMBA) using public data: tons per municipality and facility, monthly and year-over-year stats, and maps of municipalities, landfills and transfer stations. Built with a NestJS REST API on Render with a Neon Postgres database, JWT auth with roles, and an Angular frontend on Vercel.',
+      video: '/media/observatorioamba.webm',
+      url: 'https://residuos-amba.vercel.app',
+      docs: 'https://residuos-amba-api.onrender.com/api/docs',
+    },
+    {
+      id: 3,
       title: 'International Women´s Forum Argentina',
       description:
         'Developed and designed in 2024 using Angular and Supabase. With a personal dashboard for the client to dynamically change the content of the website (events, activities and milestones)',
